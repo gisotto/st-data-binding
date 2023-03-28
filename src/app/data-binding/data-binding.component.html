@@ -1,16 +1,43 @@
 <section class="property-binding">
-    <article>
-        <h3>Interpolation/Interpolação</h3>
-        <p>String renderizada com Interpolação {{ url }}</p>
-        <p>Resultado de 1 + 1 é: {{ 1+1 }}</p>
-        <p>Resultado de 1 + 1 não é: {{ 1+1+ getValor()}}</p>
-        <p>Curso de Angular e gosto do curso: {{ cursoAngular && getCurtirCurso() }}</p>
-    </article>
+  <article>
+    <h3>Interpolation/Interpolação</h3>
+    <p>String renderizada com Interpolação {{ url }}</p>
+    <p>Resultado de 1 + 1 é: {{ 1 + 1 }}</p>
+    <p>Resultado de 1 + 1 não é: {{ 1 + 1 + getValor() }}</p>
+    <p>
+      Curso de Angular e gosto do curso: {{ cursoAngular && getCurtirCurso() }}
+    </p>
+  </article>
 
-    <article>
-        <h3>Property-Binding</h3>
-        <img [src]="urlImagem">
-        <img src={{urlImagem}}>
+  <article>
+    <h3>Property-Binding</h3>
+    <img [src]="urlImagem" />
+    <img src="{{ urlImagem }}" />
+  </article>
 
-    </article>
+  <article>
+    <h3>Class e Style - Binding</h3>
+    <div>
+        Selecione uma classe
+        <select #classe (change)="0">
+            <option value="alert-success">Sucesso</option>
+            <option value="alert-info">Info</option>
+            <option value="alert-warning">Alerta</option>
+            <option value="alert-danger">Erro</option>
+        </select>
+       
+        <br><br>
+
+        <!-- <div class="alert {{ classe.value}}">Texto colorido conforme o combo</div> -->
+        <div class="alert" [class]="classe.value">Texto colorido conforme o combo</div>
+
+        <div class="alert" [class.alert-success]="classe.value === 'alert-success'" role="alert">Successo</div>
+        <div class="alert" [class.alert-info]="classe.value === 'alert-info'" role="alert">Info</div>
+        <div class="alert" [class.alert-warning]="classe.value === 'alert-warning'" role="alert">Alerta</div>
+        <div class="alert" [class.alert-danger]="classe.value === 'alert-danger'" role="alert">Erro</div>
+        
+        <div class="alert alert-danger" role="alert" [style.display]="classe.value === 'alert-danger' ? 'block' : 'none' ">Só aparece em caso de erro</div>
+    
+    </div>
+  </article>
 </section>
